@@ -16,15 +16,24 @@
     "lint": "eslint \"{src,apps,libs}/**/*.ts\" --fix"
   },
   "dependencies": {
+    "@apollo/federation": "^0.36.0",
+    "@nestjs/apollo": "^10.0.8",
     "@nestjs/common": "^8.0.0",
     "@nestjs/config": "^2.0.0",
     "@nestjs/core": "^8.0.0",
+    "@nestjs/graphql": "^10.0.8",
+    "@nestjs/microservices": "^8.4.3",
     "@nestjs/platform-express": "^8.0.0",
+    "@prisma/client": "^3.11.1",
+    "apollo-server-express": "^3.6.7",
     "express-jwt": "^6.1.1",
-    "jwks-rsa": "^2.1.1",
+    "graphql": "^15.8.0",
+    "jwks-rsa": "^2.0.5",
+    "kafkajs": "^1.16.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "slugify": "^1.6.5"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
@@ -37,10 +46,11 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.3.2",
+    "prisma": "^3.11.1",
     "source-map-support": "^0.5.20",
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
-    "tsconfig-paths": "4.0.0",
+    "tsconfig-paths": "^3.10.1",
     "typescript": "^4.3.5"
   }
 }
