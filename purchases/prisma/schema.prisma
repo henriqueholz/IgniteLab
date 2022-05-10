@@ -10,4 +10,40 @@ datasource db {
 model Customer {
   id String @id @default(uuid())
 
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now())
+  Purchase  Purchase[]
+}
+
+model Product {
+  id String @id @default(uuid())
+
+  title String
+  slug  String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  purchasedOn Purchase[]
+}
+
+enum PuchaseStatus {
+  PENDING
+  APPROVED
+  FAILED
+}
+
+model Purchase {
+  id String @id @default(uuid())
+
+  status PuchaseStatus @default(PENDING)
+
+  Customer   Customer? @relation(fields: [customerId], references: [id])
+  customerId String?
+
+  Product   Product @relation(fields: [ProductId], references: [id])
+  ProductId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
