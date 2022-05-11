@@ -9,40 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PurchasesService = void 0;
+exports.CustomersService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../database/prisma/prisma.service");
-let PurchasesService = class PurchasesService {
+let CustomersService = class CustomersService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    listAllPurchases() {
-        return this.prisma.purchase.findMany({
-            orderBy: {
-                createdAt: 'desc',
+    getCustomerByAuthUserId(authUserId) {
+        return this.prisma.customer.findUnique({
+            where: {
+                authUserId,
             },
         });
     }
-    async createPurchase({ customerId, productId }) {
-        const product = await this.prisma.product.findUnique({
-            where: {
-                id: productId,
-            },
-        });
-        if (!product) {
-            throw new Error('Product not found.');
-        }
-        return await this.prisma.purchase.create({
+    async createCustomer({ authUserId }) {
+        return await this.prisma.customer.create({
             data: {
-                customerId,
-                productId,
+                authUserId,
             },
         });
     }
 };
-PurchasesService = __decorate([
+CustomersService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
-], PurchasesService);
-exports.PurchasesService = PurchasesService;
-//# sourceMappingURL=purchases.service.js.map
+], CustomersService);
+exports.CustomersService = CustomersService;
+//# sourceMappingURL=customers.service.js.map

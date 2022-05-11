@@ -10,9 +10,12 @@ datasource db {
 model Customer {
   id String @id @default(uuid())
 
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @default(now())
-  Purchase  Purchase[]
+  authUserId String? @unique
+
+  Purchase Purchase[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 model Product {

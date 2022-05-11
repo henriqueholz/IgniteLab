@@ -20,6 +20,8 @@ const apollo_1 = require("@nestjs/apollo");
 const product_service_1 = require("../services/product.service");
 const purchases_service_1 = require("../services/purchases.service");
 const purchases_resolver_1 = require("./graphql/resolvers/purchases.resolver");
+const customers_service_1 = require("../services/customers.service");
+const customers_resolver_1 = require("./graphql/resolvers/customers.resolver");
 let HttpModule = class HttpModule {
 };
 HttpModule = __decorate([
@@ -34,9 +36,11 @@ HttpModule = __decorate([
         ],
         providers: [
             products_resolver_1.ProductsResolver,
-            product_service_1.ProductsService,
             purchases_resolver_1.PurchasesResolver,
+            customers_resolver_1.CustomersResolver,
+            product_service_1.ProductsService,
             purchases_service_1.PurchasesService,
+            customers_service_1.CustomersService,
         ],
     })
 ], HttpModule);
