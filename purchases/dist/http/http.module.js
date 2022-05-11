@@ -18,6 +18,8 @@ const path_1 = __importDefault(require("path"));
 const products_resolver_1 = require("./graphql/resolvers/products.resolver");
 const apollo_1 = require("@nestjs/apollo");
 const product_service_1 = require("../services/product.service");
+const purchases_service_1 = require("../services/purchases.service");
+const purchases_resolver_1 = require("./graphql/resolvers/purchases.resolver");
 let HttpModule = class HttpModule {
 };
 HttpModule = __decorate([
@@ -30,7 +32,12 @@ HttpModule = __decorate([
                 autoSchemaFile: path_1.default.resolve(process.cwd(), 'src/schema.gql'),
             }),
         ],
-        providers: [products_resolver_1.ProductsResolver, product_service_1.ProductsService],
+        providers: [
+            products_resolver_1.ProductsResolver,
+            product_service_1.ProductsService,
+            purchases_resolver_1.PurchasesResolver,
+            purchases_service_1.PurchasesService,
+        ],
     })
 ], HttpModule);
 exports.HttpModule = HttpModule;

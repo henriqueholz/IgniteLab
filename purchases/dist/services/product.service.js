@@ -23,6 +23,13 @@ let ProductsService = class ProductsService {
     listAllProducts() {
         return this.prisma.product.findMany();
     }
+    getProductById(id) {
+        return this.prisma.product.findUnique({
+            where: {
+                id,
+            },
+        });
+    }
     async createProduct({ title }) {
         const slug = (0, slugify_1.default)(title, {
             lower: true,

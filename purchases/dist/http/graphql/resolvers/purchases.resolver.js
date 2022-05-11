@@ -12,38 +12,40 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductsResolver = void 0;
+exports.PurchasesResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const product_service_1 = require("../../../services/product.service");
-const create_product_input_1 = require("../inputs/create-product-input");
-const product_1 = require("../models/product");
-let ProductsResolver = class ProductsResolver {
-    constructor(productsService) {
+const purchases_service_1 = require("../../../services/purchases.service");
+const purchase_1 = require("../models/purchase");
+let PurchasesResolver = class PurchasesResolver {
+    constructor(purchasesService, productsService) {
+        this.purchasesService = purchasesService;
         this.productsService = productsService;
     }
-    products() {
-        return this.productsService.listAllProducts();
+    purchases() {
+        return this.purchasesService.listAllPurchases();
     }
-    createProduct(data) {
-        return this.productsService.createProduct(data);
+    product(purchase) {
+        return this.productsService.getProductById(purchase.productId);
     }
 };
 __decorate([
-    (0, graphql_1.Query)(() => [product_1.Product]),
+    (0, graphql_1.Query)(() => [purchase_1.Purchase]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], ProductsResolver.prototype, "products", null);
+], PurchasesResolver.prototype, "purchases", null);
 __decorate([
-    (0, graphql_1.Mutation)(() => product_1.Product),
-    __param(0, (0, graphql_1.Args)('data')),
+    (0, graphql_1.ResolveField)(),
+    __param(0, (0, graphql_1.Parent)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_product_input_1.CreateProductInput]),
+    __metadata("design:paramtypes", [purchase_1.Purchase]),
     __metadata("design:returntype", void 0)
-], ProductsResolver.prototype, "createProduct", null);
-ProductsResolver = __decorate([
-    (0, graphql_1.Resolver)(() => product_1.Product),
-    __metadata("design:paramtypes", [product_service_1.ProductsService])
-], ProductsResolver);
-exports.ProductsResolver = ProductsResolver;
-//# sourceMappingURL=products.resolver.js.map
+], PurchasesResolver.prototype, "product", null);
+PurchasesResolver = __decorate([
+    (0, graphql_1.Resolver)(() => purchase_1.Purchase),
+    __metadata("design:paramtypes", [purchases_service_1.PurchasesService,
+        product_service_1.ProductsService])
+], PurchasesResolver);
+exports.PurchasesResolver = PurchasesResolver;
+//# sourceMappingURL=purchases.resolver.js.map
