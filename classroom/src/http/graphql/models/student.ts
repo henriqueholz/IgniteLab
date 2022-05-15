@@ -1,10 +1,15 @@
-import { Field, ObjectType, ID } from '@nestjs/graphql';
+import { Field, ObjectType, ID, Directive } from '@nestjs/graphql';
 import { Enrollment } from './enrollment';
 
-@ObjectType()
+@ObjectType('User')
+@Directive('@extends')
+@Directive('@key(fields: "authUserId")')
 export class Student {
-  @Field(() => ID)
   id: string;
+
+  @Field(() => ID)
+  @Directive('@external')
+  authUserId: string;
 
   @Field(() => [Enrollment])
   enrollments: Enrollment[];

@@ -44,8 +44,8 @@ export class PurchasesService {
 
     const purchase = await this.prisma.purchase.create({
       data: {
-        productId,
         customerId,
+        productId,
       },
     });
 
