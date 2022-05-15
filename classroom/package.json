@@ -22,7 +22,7 @@
     "@nestjs/config": "^2.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/graphql": "^10.0.8",
-    "@nestjs/microservices": "^8.4.3",
+    "@nestjs/microservices": "^8.4.5",
     "@nestjs/platform-express": "^8.0.0",
     "@prisma/client": "^3.11.1",
     "apollo-server-express": "^3.6.7",
