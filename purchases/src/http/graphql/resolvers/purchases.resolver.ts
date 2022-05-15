@@ -8,12 +8,12 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { CustomersService } from '../../../services/customers.service';
-import { ProductsService } from '../../../services/product.service';
+import { ProductsService } from '../../../services/products.service';
+
 import { PurchasesService } from '../../../services/purchases.service';
 import { AuthorizationGuard } from '../../auth/authorization.guard';
 import { AuthUser, CurrentUser } from '../../auth/current-user';
 import { CreatePurchaseInput } from '../inputs/create-purchase-input';
-import { Product } from '../models/product';
 import { Purchase } from '../models/purchase';
 
 @Resolver(() => Purchase)
@@ -53,7 +53,7 @@ export class PurchasesResolver {
 
     return this.purchasesService.createPurchase({
       customerId: customer.id,
-      productId: data.ProductId,
+      productId: data.productId,
     });
   }
 }

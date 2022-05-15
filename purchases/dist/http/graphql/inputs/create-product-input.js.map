@@ -1,1 +1,0 @@
-{"version":3,"file":"create-product-input.js","sourceRoot":"","sources":["../../../../src/http/graphql/inputs/create-product-input.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,6CAAmD;AAGnD,IAAa,kBAAkB,GAA/B,MAAa,kBAAkB;CAG9B,CAAA;AADC;IADC,IAAA,eAAK,GAAE;;iDACM;AAFH,kBAAkB;IAD9B,IAAA,mBAAS,GAAE;GACC,kBAAkB,CAG9B;AAHY,gDAAkB"}
